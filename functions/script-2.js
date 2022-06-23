@@ -433,7 +433,7 @@
 // *** ARRAY METHODS ***
 // name arrays with plural S/ES
 
-const names = [`Jon`, `Bob`, `David`, `Mark`];
+// const names = [`Jon`, `Bob`, `David`, `Mark`];
 
 // // ***ARRAY PUSH*** - Adds a new element containing an entered value to the end of an array
 
@@ -481,4 +481,267 @@ const names = [`Jon`, `Bob`, `David`, `Mark`];
 
 // *** MORE ARRAY METHODS***
 
-// *** ARRAY FOR EACH***
+// *** ARRAY FOREACH***
+//
+// most used array method + map
+
+// Array forEach
+
+// const names = [`Jon`, `Jenny`, `Johnny`];
+
+// using for method
+
+// for (let i = 0; i < names.length; i++) {
+//   console.log(i, names[i]); // 1 jon, 1 jenny, 2 johnny
+// }
+
+// for each
+
+//FOR EACH SYNTAX
+// names.forEach((value, i) => {
+
+// });
+
+// names.forEach((name, i) => {
+//   console.log(name, i); // 1 jon, 1 jenny, 2 johnny
+// });
+
+// same as below (above is more common
+// foreach method always return UNDEFINED value
+
+// const names = [`Jon`, `Jenny`, `Johnny`];
+
+// const logTheName = (name, i) => {
+//   console.log(name, i);
+// };
+
+// names.forEach(logTheName);
+
+// we want to know the return value of foreach
+// foreach method always return UNDEFINED value
+
+// USE WHEN (forEach)
+// you want to do something with each element of the array
+
+// DONT USE WHEN
+// you want to stop or break the loop when some condition is true (this is for)
+// when working wth async code
+
+// application example
+
+// let sum = 0;
+// const numbers = [65, 44, 12, 4];
+
+// numbers.forEach((number) => {
+//   sum += number;
+// });
+
+// console.log(sum);
+
+// the syntax
+// variable.forEach = ((param) =>  {
+// return function
+// })
+
+// ***ARRAY MAP***
+
+// array returns a value // for each method does not
+
+// const inventory = [
+//   { price: 5, name: `eggs` },
+//   { price: 4, name: `ham` },
+//   { price: 3, name: `mayo` },
+//   { price: 5, name: `bread` },
+// ];
+
+// //Create a new array
+
+// const prices = inventory.map((item) => item.price);
+// const items = inventory.map((item) => item.name);
+// console.log(prices); // [5, 4, 3, 5]
+// console.log(items);
+
+// ***ARRAY FILTER***
+
+// FILTERS certain elements from an array
+
+// *** FILTER EXAMPE 1***
+
+// const numbers = [-10, 0, -2, 15, -36, 25];
+
+// what if we only want positive?
+
+// numbers.filter((number) => {
+//   return number >= 0;
+// });
+
+// console.log(numbers); //nothing changed, still get all number
+// filter doesnt change the original but it returns the new array
+// so we need to assign it to a new variable
+//arrow without curly braces, immediate return
+
+// const positiveNumbers = numbers.filter((number) => number >= 0);
+
+// console.log(positiveNumbers); //[0, 15, 25]
+
+//how for FOR loop = longer method
+
+// for (let i = 0; i < numbers.length; i++) {
+//   if (numbers[i >= 0]) {
+//     positiveNumbers.push(numbers[i]);
+//   }
+// }
+// console.log(positiveNumbers);
+
+//long, complicated code. - FILTER faster
+
+// *** FILTER EXAMPE 2***
+// study this
+// a startup wants to reward employees with 7 or more hours of overtime
+
+// const employeesData = [
+//   { name: `Sebastian`, overtime: 5 },
+//   { name: `Cardi B`, overtime: 10 },
+//   { name: `Georgy`, overtime: 12 },
+// ];
+
+// const employeesToReward = employeesData.filter(
+//   (employee) => employee.overtime > 7
+// );
+
+// console.log(employeesToReward);
+// // // 0: {name: 'Cardi B', overtime: 10}
+// // 1: {name: 'Georgy', overtime: 12}
+// // length: 2
+// // [[Prototype]]: Array(0)
+
+// //what if you only want to show the names?
+
+// const employeeNames = employeesToReward.map((employee) => employee.name);
+
+// console.log(employeeNames); // ['Cardi B', 'Georgy']
+
+// // what if employee names + a personal msg?
+
+// employeeNames.forEach((name) => console.log(`${name} received a reward`));
+//Cardi B received a reward
+//Georgy received a reward
+
+// *** ARRAY FIND ***
+// find an array that matches a certain condition
+// returns the first value that satisfied the condition
+
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// // numbers.find((number) => number > 5); // numbers will loop array
+// // once it finds true, it will return.
+
+// console.log(numbers.find((number) => number > 5)); //6
+// // but better to assign the value to a const
+
+// const value = numbers.find((number) => number > 5);
+
+// console.log(value); // 6
+
+// *** ANOTHER EXAMPLE ***
+
+// const states = ["Alaska", "California", "Colorado", "Hawaii"];
+
+// const cState = states.find((state) => state.startsWith("C"));
+
+// console.log(cState);
+
+// *** ARRAY SORT *** ARRAY REVERSE ***
+// sort an array of string alphabetically
+
+// *** EXAMPLE 1 *** arrray sort and array reverse
+
+// const names = ["Anne", "Carl", "Bob", "Dean"];
+// names.sort();
+// console.log(names); //['Anne', 'Bob', 'Carl', 'Dean']
+// names.reverse();
+// console.log(names); ['Dean', 'Carl', 'Bob', 'Anne']
+// you need to log so you need to know that it happens or it can mess up your whole code
+// sort method mutates the original array
+// map, filter - creates new array // sort doesnt, it mutates
+// in react we must never mutate the original state array
+
+// *** EXAMPLE 2 ***
+
+// const numbers = [6, 5, 4, 2, 1, 9];
+// numbers.sort();
+// console.log(numbers); //[1, 2, 4, 5, 6, 9]
+
+// // DOESNT SORT NUMBER in ascending order
+// const numbers2 = [6, 5, 4, 2, 1, 9, 15, 25];
+// numbers2.sort();
+// console.log(numbers2); // [1, 15, 2, 25, 4, 5, 6, 9]
+
+// // how can we make it sort ascending or descending
+
+// numbers2.sort((a, b) => a - b); // this sorts the numbers larger - smaller. ascending order
+// numbers2.sort((a, b) => b - a);
+// // (b-a) then descending order
+// console.log(numbers2); // [1, 2, 4, 5, 6, 9, 15, 25]
+
+// *** ARRAY SOME & EVERY ***
+
+// ***ARRAY SOME***
+
+// test if at least one element of an array passes the TEST or function we implement
+// const array = [1, 2, 3, 4, 5];
+// const greaterThan3 = (number) => number > 3;
+
+// //another way to do this (shorter way)
+// console.log(array.some((el) => el > 3)); // true
+
+// console.log(array.some(greaterThan3)); //true //  IN ENGLISH...check if SOME elements greater than 3, so we get a boolean
+
+// // *** ARRAY EVERY ***
+
+// console.log(array.every(greaterThan3)); // false... IN ENGLISH...check if EVERY elements greater than 3, so we get a boolean
+
+// //another way to do this (shorter way)
+// console.log(array.every((el) => el > 3)); // false
+// if ALL elements pass the test
+// el = elements = the values inside the original array
+
+// *** ARRAY REDUCE ***
+
+// Starts with all the elements and computes to a single value
+
+// ***EXAMPLE 1***
+// We want to know the total price of the grocery items
+
+// const groceryList = [29, 12, 45, 35, 87, 110];
+
+// // forEach solution
+
+// let total = 0; // there's a need for am external  variable to know total price
+// groceryList.forEach((price) => {
+//   total += price;
+// });
+// console.log(total); // 318
+
+// DOT REDUCE SOLUTION
+
+// const total = groceryList.reduce(
+//   (accumulator, currentValue) => accumulator + currentValue,
+//   0 //  accumulator starts at zero,  currentValue starts at 29
+// );
+
+// console.log(total);
+
+// ***EXAMPLE 2*** = simpler case
+
+// const numbers = [1, 2, 3, 4, 5];
+
+// const total = numbers.reduce((acc, val) => acc + val, 0);
+
+// console.log(total); // 15 - total value of all the numbers
+
+// what happens behind the scenes?
+// acc = 0 , val = 1 (1st value) => 0 + 1 === 1;
+// acc = 1, val = 2 (2nd value) = > 1 + 2 === 3 ... new acc and new val each step till we get the last sum. // till 15
+
+// we can sum up anything - strings, functions, object
